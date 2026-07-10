@@ -1,0 +1,7 @@
+{
+  "name": "finance-tracker-api",
+  "env": "node",
+  "buildCommand": "npm install && npm run build",
+  "startCommand": "npm run db:push && npm start",
+  "healthCheckPath": "/api/health"
+}
