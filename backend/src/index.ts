@@ -16,9 +16,24 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // CORS - allow frontend origin (Vercel or localhost)
+// When FRONTEND_URL is "*" we allow all origins (dev/testing only).
+// With credentials:true, browsers reject a literal "*" origin, so we
+// use a function that reflects the request origin instead.
+const rawOrigin = process.env.FRONTEND_URL || "http://localhost:5173";
+const allowedOrigins = rawOrigin.split(",").map((s) => s.trim());
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: (requestOrigin, callback) => {
+      // Allow server-to-server requests (no Origin header) or wildcard mode
+      if (!requestOrigin || allowedOrigins.includes("*")) {
+        return callback(null, true);
+      }
+      if (allowedOrigins.includes(requestOrigin)) {
+        return callback(null, true);
+      }
+      callback(new Error(`CORS: origin ${requestOrigin} not allowed`));
+    },
     credentials: true,
   })
 );
