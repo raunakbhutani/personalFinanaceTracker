@@ -36,17 +36,17 @@ export function ConfirmDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
-          {description && <DialogDescription>{description}</DialogDescription>}
+      <DialogContent className="p-8 gap-6">
+        <DialogHeader className="space-y-3">
+          <DialogTitle className="text-2xl">{title}</DialogTitle>
+          {description && <DialogDescription className="text-base">{description}</DialogDescription>}
         </DialogHeader>
 
-        <div className="mt-4 flex justify-end gap-2">
-          <Button variant="ghost" onClick={() => onOpenChange(false)}>
+        <div className="mt-6 flex justify-end gap-3">
+          <Button variant="ghost" onClick={() => onOpenChange(false)} className="px-6 py-2 text-base">
             {cancelLabel}
           </Button>
-          <Button variant="destructive" onClick={handleConfirm}>
+          <Button variant="destructive" onClick={handleConfirm} className="px-6 py-2 text-base">
             {confirmLabel}
           </Button>
         </div>

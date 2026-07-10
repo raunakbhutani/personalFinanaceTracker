@@ -11,7 +11,6 @@ import { TransactionTable } from "@/components/transactions/TransactionTable";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Spinner } from "@/components/ui/spinner";
-import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 import { useAnalytics } from "@/contexts/AnalyticsContext";
 import type { Transaction, TransactionFormData } from "@/types";
@@ -115,11 +114,7 @@ export function DashboardPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight font-heading">Dashboard</h1>
-          <div className="flex items-center gap-3">
-            <p className="text-muted-foreground">Welcome back, {user?.name}</p>
-            {/* Theme toggle at the right of the name and at the same height */}
-            <ThemeToggle />
-          </div>
+          <p className="text-muted-foreground">Welcome back, {user?.name}</p>
         </div>
         <Button onClick={() => setDialogOpen(true)}>
           <Plus className="mr-2 h-4 w-4" />

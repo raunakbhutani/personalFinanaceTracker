@@ -59,13 +59,13 @@ export function Sidebar() {
         ))}
       </nav>
 
-      <div className="border-t border-sidebar-accent p-4 space-y-2">
-        <div className="flex items-center justify-between px-2">
+      <div className="border-t border-sidebar-accent p-4 space-y-3">
+        <div className="flex items-center justify-between px-2 gap-2">
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-sidebar-foreground truncate">{user?.name}</p>
+            <p className="text-xs text-sidebar-foreground/60 truncate">{user?.email}</p>
+          </div>
           <ThemeToggle variant="sidebar" />
-        </div>
-        <div className="px-2">
-          <p className="text-sm font-medium text-sidebar-foreground truncate">{user?.name}</p>
-          <p className="text-xs text-sidebar-foreground/60 truncate">{user?.email}</p>
         </div>
         <Button
           variant="ghost"
