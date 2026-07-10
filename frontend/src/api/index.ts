@@ -1,3 +1,4 @@
+// API helpers for frontend pages and components. These functions wrap backend requests for auth, transactions, budgets, categories, and analytics.
 import api from "./client";
 import type {
   ApiResponse,

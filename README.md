@@ -1,125 +1,134 @@
-# Personal Finance Tracker
+# FinTrack
 
-A full-stack personal finance tracking application with a fintech-style dashboard, transaction management, budget tracking, and analytics.
+FinTrack is a full-stack personal finance tracker built with React, TypeScript, Node.js, Express, Prisma, and PostgreSQL. It helps users manage income and expenses, set monthly budgets, track analytics, and review recent transactions through a polished dashboard.
+
+## Features
+
+- Secure authentication with JWT
+- Transaction CRUD for income and expense entries
+- Budget creation and progress tracking by category
+- Dashboard analytics with totals, monthly trend, category breakdown, and budget comparison
+- Responsive UI with light/dark theme support
 
 ## Tech Stack
 
 ### Frontend
-- React.js + TypeScript + Vite
-- Tailwind CSS + shadcn/ui components
-- React Router, Axios, Recharts
+- React 19 + TypeScript
+- Vite
+- Tailwind CSS
+- Recharts, React Router, Axios
 
 ### Backend
-- Node.js + Express.js + TypeScript
+- Node.js + Express + TypeScript
 - Prisma ORM + PostgreSQL
-- JWT authentication + bcrypt
+- JWT + bcrypt
 
 ## Project Structure
 
-```
+```text
 expenseTrackerProject/
 ├── backend/
 │   ├── prisma/
-│   │   ├── schema.prisma      # User, Transaction, Budget, Category models
-│   │   └── seed.ts            # Demo data seeder
-│   ├── src/
-│   │   ├── controllers/       # Route handlers
-│   │   ├── middleware/        # Auth, validation, error handling
-│   │   ├── routes/            # API route definitions + Zod schemas
-│   │   ├── types/             # TypeScript interfaces
-│   │   ├── utils/             # Prisma client, response helpers
-│   │   └── index.ts           # Express app entry point
-│   ├── railway.json           # Railway deployment config
-│   └── render.yaml            # Render deployment config
+│   │   ├── schema.prisma
+│   │   └── seed.ts
+│   └── src/
+│       ├── controllers/
+│       ├── middleware/
+│       ├── routes/
+│       ├── types/
+│       └── utils/
 ├── frontend/
-│   ├── src/
-│   │   ├── api/               # Axios client + API functions
-│   │   ├── components/
-│   │   │   ├── ui/            # shadcn/ui components
-│   │   │   ├── layout/        # Sidebar, protected routes
-│   │   │   ├── dashboard/     # Metrics, charts
-│   │   │   ├── transactions/  # Table, dialog forms
-│   │   │   └── budgets/       # Budget dialog
-│   │   ├── contexts/          # AuthContext (JWT state)
-│   │   ├── pages/             # Route pages
-│   │   ├── types/             # Frontend TypeScript interfaces
-│   │   └── lib/               # Utility functions
-│   └── vercel.json            # Vercel SPA routing config
+│   ├── public/
+│   └── src/
+│       ├── api/
+│       ├── components/
+│       ├── contexts/
+│       ├── lib/
+│       ├── pages/
+│       └── types/
 └── README.md
 ```
 
-## Getting Started
+## Prerequisites
 
-### Prerequisites
 - Node.js 18+
-- PostgreSQL database (local, Railway, or Render)
+- PostgreSQL database
+- npm or pnpm
 
-### Backend Setup
+## Environment Setup
+
+### Backend
+
+1. Copy the example file:
+   ```bash
+   cd backend
+   cp .env.example .env
+   ```
+2. Update the values in `.env`:
+   - `DATABASE_URL`
+   - `JWT_SECRET`
+   - `PORT` (optional)
+   - `FRONTEND_URL`
+
+### Frontend
+
+1. Copy the example file:
+   ```bash
+   cd frontend
+   cp .env.example .env
+   ```
+2. Update `VITE_API_URL` if your backend is running on a different URL.
+
+## Installation
+
+### Backend
 
 ```bash
 cd backend
-cp .env.example .env
-# Edit .env with your DATABASE_URL and JWT_SECRET
-
 npm install
-npm run db:push        # Create database tables
-npm run db:seed        # Optional: seed demo user
-npm run dev            # Start dev server on http://localhost:5000
+npm run db:push
+npm run db:seed
+npm run dev
 ```
 
-**Demo credentials** (after seeding):
-- Email: `demo@finance.com`
-- Password: `password123`
+The backend runs on `http://localhost:5001` by default.
 
-### Frontend Setup
+### Frontend
 
 ```bash
 cd frontend
-cp .env.example .env
-# Set VITE_API_URL=http://localhost:5000/api
-
 npm install
-npm run dev            # Start dev server on http://localhost:5173
+npm run dev
 ```
 
-## API Endpoints
+The frontend runs on `http://localhost:5173` by default.
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/signup` | Register new user |
-| POST | `/api/auth/login` | Login, returns JWT |
-| GET | `/api/auth/me` | Get current user |
-| GET | `/api/transactions` | List transactions |
-| POST | `/api/transactions` | Create transaction |
-| PUT | `/api/transactions/:id` | Update transaction |
-| DELETE | `/api/transactions/:id` | Delete transaction |
-| GET | `/api/categories` | List categories |
-| GET | `/api/budgets` | List budgets with spending |
-| POST | `/api/budgets` | Set monthly budget |
-| GET | `/api/analytics` | Dashboard analytics |
+## API Overview
 
-## Deployment
+- `POST /api/auth/signup`
+- `POST /api/auth/login`
+- `GET /api/auth/me`
+- `GET /api/transactions`
+- `POST /api/transactions`
+- `PUT /api/transactions/:id`
+- `DELETE /api/transactions/:id`
+- `GET /api/categories`
+- `GET /api/budgets`
+- `POST /api/budgets`
+- `GET /api/analytics`
 
-### Frontend (Vercel)
-1. Push `frontend/` to GitHub
-2. Import project in Vercel
-3. Set environment variable: `VITE_API_URL=https://your-api.railway.app/api`
-4. Deploy
+## Deployment Notes
 
-### Backend (Railway or Render)
-1. Create a PostgreSQL database
-2. Deploy the `backend/` directory
-3. Set environment variables:
-   - `DATABASE_URL` (from your database provider)
-   - `JWT_SECRET` (strong random string)
-   - `FRONTEND_URL` (your Vercel URL)
-   - `PORT` (usually auto-set)
-4. The start command runs `db:push` then starts the server
+### Frontend
+- Deploy the `frontend` folder to Vercel.
+- Set `VITE_API_URL` to your deployed backend URL.
 
-## Features
+### Backend
+- Deploy the `backend` folder to Railway or Render.
+- Set the same environment variables from `.env` in the hosting platform.
 
-- **Authentication**: Signup, login, JWT-protected routes
-- **Transactions**: Full CRUD with income/expense types, categories, dates
-- **Budgets**: Monthly spending limits with progress tracking
-- **Analytics**: Income/expense totals, monthly trends, category breakdown
-- **Responsive**: Mobile-friendly sidebar navigation and layouts
+## Security Notes
+
+- Never commit real `.env` files to Git.
+- Use strong secrets in production.
+- Keep your database credentials and JWT secret private.

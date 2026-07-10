@@ -1,3 +1,5 @@
+// Backend entry point for the FinTrack API. This file creates the Express app,
+// wires middleware and routes, and starts the server.
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -11,7 +13,7 @@ import { errorHandler } from "./middleware/errorHandler";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // CORS - allow frontend origin (Vercel or localhost)
 app.use(

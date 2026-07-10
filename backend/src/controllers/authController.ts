@@ -1,3 +1,4 @@
+// Auth controller: handles signup, login, and profile lookup using JWT-based authentication.
 import { Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";

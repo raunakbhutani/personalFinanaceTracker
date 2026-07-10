@@ -1,3 +1,4 @@
+// Auth routes define the public authentication endpoints for signup and login.
 import { Router } from "express";
 import { signup, login, getMe } from "../controllers/authController";
 import { authenticate } from "../middleware/auth";

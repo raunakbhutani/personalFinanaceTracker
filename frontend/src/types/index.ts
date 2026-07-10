@@ -1,4 +1,5 @@
-// Core TypeScript interfaces for the Finance Tracker frontend
+// Core TypeScript interfaces for the FinTrack frontend. These types define
+// the shape of users, transactions, budgets, analytics, and form data.
 
 export type TransactionType = "INCOME" | "EXPENSE";
 

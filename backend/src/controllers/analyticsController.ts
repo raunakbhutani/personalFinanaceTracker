@@ -1,3 +1,5 @@
+// Analytics controller: prepares dashboard metrics, monthly trends, category
+// breakdowns, and budget comparison data for the frontend analytics views.
 import { Response } from "express";
 import { AuthRequest, AnalyticsSummary } from "../types";
 import { prisma } from "../utils/prisma";

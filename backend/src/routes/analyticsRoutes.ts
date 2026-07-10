@@ -1,3 +1,4 @@
+// Analytics routes expose the analytics endpoint used by the dashboard charts.
 import { Router } from "express";
 import { getAnalytics } from "../controllers/analyticsController";
 import { authenticate } from "../middleware/auth";
