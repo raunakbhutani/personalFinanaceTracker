@@ -91,10 +91,14 @@ export function SignupPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-lg cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground cursor-pointer flex items-center justify-center"
                     aria-label={showPassword ? "Hide password" : "Show password"}
                   >
-                    {showPassword ? "👁️" : "👁️‍🗨️"}
+                    {showPassword ? (
+                      <i className="ri-eye-off-line text-lg"></i>
+                    ) : (
+                      <i className="ri-eye-line text-lg"></i>
+                    )}
                   </button>
                 </div>
               </div>

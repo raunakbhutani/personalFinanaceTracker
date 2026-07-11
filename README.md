@@ -1,134 +1,246 @@
-# FinTrack
+# 💰 FinTrack — Personal Finance & Expense Tracker
 
-FinTrack is a full-stack personal finance tracker built with React, TypeScript, Node.js, Express, Prisma, and PostgreSQL. It helps users manage income and expenses, set monthly budgets, track analytics, and review recent transactions through a polished dashboard.
+FinTrack is a premium, full-stack personal finance tracking application designed to help users log daily financial transactions, set monthly category-wise budgets, analyze spending trends, and visualize key financial metrics through a sleek, responsive dashboard.
 
-## Features
+Built using a modern developer stack: **React 19, Vite, TypeScript, Tailwind CSS, Express.js, Prisma ORM, and PostgreSQL**.
 
-- Secure authentication with JWT
-- Transaction CRUD for income and expense entries
-- Budget creation and progress tracking by category
-- Dashboard analytics with totals, monthly trend, category breakdown, and budget comparison
-- Responsive UI with light/dark theme support
+---
 
-## Tech Stack
+## 🌟 Key Features
 
-### Frontend
-- React 19 + TypeScript
-- Vite
-- Tailwind CSS
-- Recharts, React Router, Axios
+### 🔐 1. Secure Authentication & Profile Management
+- **JWT-based Security**: Stateless token-based session management.
+- **Password Encryption**: Secure password storage utilizing `bcrypt` hashing.
+- **Show/Hide password feature**: Smooth eye-toggle toggle button integration using the **Remix Icon** library.
+- **Guest / Protected Routing**: Restricts analytics and transaction data access to authenticated users.
 
-### Backend
-- Node.js + Express + TypeScript
-- Prisma ORM + PostgreSQL
-- JWT + bcrypt
+### 💸 2. Transaction CRUD Operations
+- **Income & Expense Logging**: Effortlessly record inflows and outflows with amount, description, date, and category.
+- **Input Validation**: Front-end validation with instant visual feedback and backend schema schema validation using **Zod**.
+- **Interactive Data Table**: View, filter, edit, and delete transactions instantly.
 
-## Project Structure
+### 🎯 3. Smart Category-Wise Budgeting
+- **Monthly Spending Limits**: Set custom monthly budgets for specific expense categories (e.g., Food, Utilities, Rent).
+- **Progress Gauges**: Clear progress bars that track the percentage of the budget consumed.
+- **Overspending Indicators**: Instantly flags categories when spending exceeds set limits.
+
+### 📊 4. Beautiful Visual Analytics (Recharts)
+- **Aggregated Financial Cards**: Real-time updates for *Total Income*, *Total Expenses*, *Net Balance*, and *Remaining Budget*.
+- **Monthly Trend Charts**: Interactive bar charts highlighting monthly cash flow trends.
+- **Category Breakdowns**: Colored donut charts representing the distribution of expenses across categories.
+- **Automatic Seed Data**: New users get pre-loaded default categories (Food, Dining, Shopping, Utilities, Salary) to start tracking instantly.
+
+---
+
+## ⚙️ Tech Stack
+
+| Layer | Technology | Key Highlights |
+|---|---|---|
+| **Frontend** | React 19 + TypeScript | Component-driven architecture, Context API state management |
+| **Styling** | Tailwind CSS | Sleek glassmorphism look, responsive flex & grid grids |
+| **Bundler** | Vite | Ultra-fast Hot Module Replacement (HMR) and optimized builds |
+| **Backend** | Express + TypeScript | Modular routing, validation middleware, and global error handling |
+| **ORM** | Prisma | Fast PostgreSQL query builders, schema sync, and migrations |
+| **Database** | PostgreSQL | Relational database hosting transactions, users, and budgets |
+| **Icons** | Remix Icons & Lucide | Sharp, vector-based glyphs across all interactive menus |
+
+---
+
+## 📁 Project Structure
 
 ```text
 expenseTrackerProject/
 ├── backend/
 │   ├── prisma/
-│   │   ├── schema.prisma
-│   │   └── seed.ts
-│   └── src/
-│       ├── controllers/
-│       ├── middleware/
-│       ├── routes/
-│       ├── types/
-│       └── utils/
+│   │   ├── schema.prisma      # DB Schema definition
+│   │   └── seed.ts            # Default seed database records
+│   ├── src/
+│   │   ├── controllers/       # Core business logic (auth, budgets, transactions)
+│   │   ├── middleware/        # Authentication, validation, and error handles
+│   │   ├── routes/            # Express route groups
+│   │   ├── types/             # Shared TypeScript structures
+│   │   └── utils/             # Prisma client wrapper, helpers
+│   ├── railway.json           # Railway cloud configurations
+│   └── package.json
+│
 ├── frontend/
-│   ├── public/
-│   └── src/
-│       ├── api/
-│       ├── components/
-│       ├── contexts/
-│       ├── lib/
-│       ├── pages/
-│       └── types/
-└── README.md
+│   ├── src/
+│   │   ├── api/               # API clients wrapper with Axios
+│   │   ├── components/        # Shared buttons, metrics cards, table widgets
+│   │   ├── contexts/          # Theme, Auth, and Analytics context engines
+│   │   ├── pages/             # Auth pages, Landing, Dashboard, and Analytics
+│   │   └── types/             # Shared client types
+│   ├── index.html
+│   ├── vercel.json            # Vercel SPA routing redirects
+│   └── package.json
 ```
 
-## Prerequisites
+---
 
-- Node.js 18+
-- PostgreSQL database
-- npm or pnpm
+## 🗺️ Database Schema Architecture
 
-## Environment Setup
+The database structure features four primary entities configured with cascade-delete integrity:
 
-### Backend
+```mermaid
+erDiagram
+    users ||--o{ transactions : logs
+    users ||--o{ budgets : configures
+    users ||--o{ categories : owns
+    categories ||--o{ transactions : classifies
+    categories ||--o{ budgets : targets
 
-1. Copy the example file:
+    users {
+        string id PK
+        string email UK
+        string name
+        string passwordHash
+        datetime createdAt
+    }
+
+    categories {
+        string id PK
+        string name
+        TransactionType type
+        string color
+        string userId FK
+    }
+
+    transactions {
+        string id PK
+        decimal amount
+        TransactionType type
+        string description
+        datetime date
+        string userId FK
+        string categoryId FK
+    }
+
+    budgets {
+        string id PK
+        decimal amount
+        int month
+        int year
+        string categoryId FK
+        string userId FK
+    }
+```
+
+---
+
+## 🚀 Local Installation & Configuration
+
+### Prerequisites
+- Node.js (v18+)
+- PostgreSQL running locally (default port: `5432`)
+
+---
+
+### Step 1: Clone and Set Environment Variables
+
+Create a copy of `.env.example` in both folders named `.env`:
+
+#### Backend Setup (`backend/.env`):
+```env
+DATABASE_URL="postgresql://<user>:<password>@localhost:5432/finance_tracker?schema=public"
+JWT_SECRET="use-a-strong-random-key"
+PORT=5001
+FRONTEND_URL="http://localhost:5173"
+```
+
+#### Frontend Setup (`frontend/.env`):
+```env
+VITE_API_URL="http://localhost:5001/api"
+```
+
+---
+
+### Step 2: Set Up Backend
+
+1. Navigate to the backend directory:
    ```bash
    cd backend
-   cp .env.example .env
    ```
-2. Update the values in `.env`:
-   - `DATABASE_URL`
-   - `JWT_SECRET`
-   - `PORT` (optional)
-   - `FRONTEND_URL`
-
-### Frontend
-
-1. Copy the example file:
+2. Install dependencies:
    ```bash
-   cd frontend
-   cp .env.example .env
+   npm install
    ```
-2. Update `VITE_API_URL` if your backend is running on a different URL.
+3. Run Prisma schema generation and push migrations to the DB:
+   ```bash
+   npm run db:push
+   ```
+4. Seed the database with default configurations:
+   ```bash
+   npm run db:seed
+   ```
+5. Launch the backend dev server:
+   ```bash
+   npm run dev
+   ```
+   *The API will listen at `http://localhost:5001`.*
 
-## Installation
+---
 
-### Backend
+### Step 3: Set Up Frontend
 
-```bash
-cd backend
-npm install
-npm run db:push
-npm run db:seed
-npm run dev
-```
+1. Navigate to the frontend directory:
+   ```bash
+   cd ../frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the dev server:
+   ```bash
+   npm run dev
+   ```
+   *Open `http://localhost:5173` in your browser.*
 
-The backend runs on `http://localhost:5001` by default.
+---
 
-### Frontend
+## 🛠️ API Routes Documentation
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+### Authentication (`/api/auth`)
+- `POST /signup` — Register a new user and pre-seed categories.
+- `POST /login` — Log in a user and return a JWT.
+- `GET /me` — Retrieve the current authenticated user's profile details.
 
-The frontend runs on `http://localhost:5173` by default.
+### Transactions (`/api/transactions`)
+- `GET /` — Fetch transaction history (supports filters: `month`, `year`, `type`, `categoryId`).
+- `GET /:id` — Get single transaction details.
+- `POST /` — Create a new transaction.
+- `PUT /:id` — Update transaction fields.
+- `DELETE /:id` — Remove transaction.
 
-## API Overview
+### Budgets (`/api/budgets`)
+- `GET /` — Fetch budget configuration for specified month/year.
+- `POST /` — Set or update monthly category budget limits.
+- `DELETE /:id` — Remove category budget.
 
-- `POST /api/auth/signup`
-- `POST /api/auth/login`
-- `GET /api/auth/me`
-- `GET /api/transactions`
-- `POST /api/transactions`
-- `PUT /api/transactions/:id`
-- `DELETE /api/transactions/:id`
-- `GET /api/categories`
-- `GET /api/budgets`
-- `POST /api/budgets`
-- `GET /api/analytics`
+### Analytics (`/api/analytics`)
+- `GET /` — Generate aggregate metrics, trend history, category splits, and budget comparisons.
 
-## Deployment Notes
+---
 
-### Frontend
-- Deploy the `frontend` folder to Vercel.
-- Set `VITE_API_URL` to your deployed backend URL.
+## ☁️ Deployment Guidelines
 
-### Backend
-- Deploy the `backend` folder to Railway or Render.
-- Set the same environment variables from `.env` in the hosting platform.
+### Backend (Railway)
+1. Provision a PostgreSQL Database service on Railway.
+2. Link your GitHub repository and set the root directory to `/backend`.
+3. Link the database by adding variable reference `DATABASE_URL` -> `${{Postgres.DATABASE_URL}}`.
+4. Add additional Environment Variables:
+   - `JWT_SECRET` (e.g., strong random hash)
+   - `FRONTEND_URL` (your deployed Vercel frontend URL, e.g., `https://personal-finance-tracker.vercel.app`)
+5. Configure public networking domain matching port **`8080`** (or default).
 
-## Security Notes
+### Frontend (Vercel)
+1. Add a new project on Vercel and import the repository.
+2. Set the root directory to `/frontend`.
+3. Set the Environment Variable:
+   - `VITE_API_URL` -> `https://your-backend-url.up.railway.app/api`
+4. Deploy the application.
 
-- Never commit real `.env` files to Git.
-- Use strong secrets in production.
-- Keep your database credentials and JWT secret private.
+---
+
+## ✍️ Signature & Authenticity
+Created and built with dedication by **Raunak Bhutani**. All rights reserved.
