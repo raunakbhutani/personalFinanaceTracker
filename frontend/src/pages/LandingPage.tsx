@@ -150,8 +150,53 @@ export function LandingPage() {
                       />
                     ))}
                   </div>
-                  <div className="flex h-36 items-center justify-center rounded-lg border bg-card p-4 shadow-sm">
-                    <div className="relative h-24 w-24 rounded-full border-[12px] border-orange-400 border-r-green-400 border-b-blue-400 border-l-purple-400" />
+                  <div className="flex h-36 items-center justify-between gap-4 rounded-lg border bg-card p-4 shadow-sm w-full">
+                    {/* SVG Donut Chart */}
+                    <div className="relative h-24 w-24 flex-shrink-0">
+                      <svg viewBox="0 0 36 36" className="w-full h-full transform -rotate-90">
+                        {/* Background Circle */}
+                        <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="var(--border)" strokeWidth="4.2" />
+                        
+                        {/* Food segment (45%) - orange-400 */}
+                        <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#f97316" strokeWidth="4.2" 
+                                strokeDasharray="45 100" strokeDashoffset="0" />
+                        
+                        {/* Shopping segment (25%) - ec4899 */}
+                        <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#ec4899" strokeWidth="4.2" 
+                                strokeDasharray="25 100" strokeDashoffset="-45" />
+                        
+                        {/* Bills segment (20%) - 8b5cf6 */}
+                        <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#8b5cf6" strokeWidth="4.2" 
+                                strokeDasharray="20 100" strokeDashoffset="-70" />
+                        
+                        {/* Other segment (10%) - 3b82f6 */}
+                        <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#3b82f6" strokeWidth="4.2" 
+                                strokeDasharray="10 100" strokeDashoffset="-90" />
+                      </svg>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider">Expenses</span>
+                      </div>
+                    </div>
+                    
+                    {/* Legend */}
+                    <div className="flex flex-col justify-center gap-1 text-[10px] text-muted-foreground font-semibold flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2 w-2 rounded-full bg-[#f97316]" />
+                        <span className="truncate">Food (45%)</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2 w-2 rounded-full bg-[#ec4899]" />
+                        <span className="truncate">Shopping (25%)</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2 w-2 rounded-full bg-[#8b5cf6]" />
+                        <span className="truncate">Bills (20%)</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2 w-2 rounded-full bg-[#3b82f6]" />
+                        <span className="truncate">Other (10%)</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
