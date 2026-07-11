@@ -55,19 +55,19 @@ export function LandingPage() {
     <div className="min-h-screen bg-background">
       {/* Navbar */}
       <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-3 sm:px-6">
           <Link to="/">
-            <Logo size="sm" />
+            <Logo size="sm" textClassName="hidden sm:block" />
           </Link>
-          <nav className="flex items-center gap-2 sm:gap-3">
+          <nav className="flex items-center gap-1.5 sm:gap-3">
             <ThemeToggle />
-            <Button variant="ghost" asChild>
+            <Button variant="ghost" className="px-2 sm:px-4" asChild>
               <Link to="/login">Sign In</Link>
             </Button>
-            <Button asChild>
+            <Button className="px-3 sm:px-4 text-xs sm:text-sm" asChild>
               <Link to="/signup">
                 Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-1.5 h-4 w-4 hidden sm:inline-block" />
               </Link>
             </Button>
           </nav>

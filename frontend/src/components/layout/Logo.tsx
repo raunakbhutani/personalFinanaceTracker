@@ -5,6 +5,7 @@ interface LogoProps {
   size?: "sm" | "md" | "lg";
   showText?: boolean;
   className?: string;
+  textClassName?: string;
 }
 
 const sizeMap = {
@@ -13,7 +14,7 @@ const sizeMap = {
   lg: { icon: "h-8 w-8", box: "h-14 w-14", text: "text-2xl" },
 };
 
-export function Logo({ size = "md", showText = true, className }: LogoProps) {
+export function Logo({ size = "md", showText = true, className, textClassName }: LogoProps) {
   const s = sizeMap[size];
 
   return (
@@ -27,7 +28,7 @@ export function Logo({ size = "md", showText = true, className }: LogoProps) {
         <Wallet className={cn("text-primary-foreground", s.icon)} />
       </div>
       {showText && (
-        <div>
+        <div className={textClassName}>
           <span className={cn("font-bold tracking-tight text-foreground", s.text)}>
             FinTrack
           </span>
