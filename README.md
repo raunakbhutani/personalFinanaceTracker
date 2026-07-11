@@ -1,10 +1,39 @@
-# 💰 FinTrack — Personal Finance & Expense Tracker
+<p align="center">
+  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); padding: 16px; border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);">
+    <rect x="2" y="4" width="20" height="16" rx="2" />
+    <path d="M12 4v16M2 12h20" stroke-opacity="0.1" />
+    <path d="M16 10h4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4V10z" fill="#1d4ed8" />
+    <circle cx="19" cy="13" r="1" fill="white" />
+  </svg>
+</p>
 
-FinTrack is a premium, full-stack personal finance tracking application designed to help users log daily financial transactions, set monthly category-wise budgets, analyze spending trends, and visualize key financial metrics through a sleek, responsive dashboard.
+<h1 align="center">FinTrack</h1>
+<p align="center"><strong>Personal Finance Tracker</strong></p>
 
-Built using a modern developer stack: **React 19, Vite, TypeScript, Tailwind CSS, Express.js, Prisma ORM, and PostgreSQL**.
+<h2 align="center">Manage your money <span style="color: #3b82f6;">with confidence</span></h2>
+
+<p align="center">
+  <em>FinTrack helps you track spending, set budgets, and visualize your financial health — all in a beautiful, easy-to-use dashboard.</em>
+</p>
+
+<p align="center">
+  <a href="#-key-features">Key Features</a> •
+  <a href="#️-tech-stack">Tech Stack</a> •
+  <a href="#-local-installation--configuration">Setup Guide</a> •
+  <a href="#-deployment-guidelines">Deployment</a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind-CSS-38bdf8?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Prisma-6-1b2b3a?style=for-the-badge&logo=prisma" alt="Prisma" />
+  <img src="https://img.shields.io/badge/Express-JS-000000?style=for-the-badge&logo=express" alt="Express" />
+  <img src="https://img.shields.io/badge/PostgreSQL-15-4169e1?style=for-the-badge&logo=postgresql" alt="PostgreSQL" />
+</p>
 
 ---
+
 
 ## 🌟 Key Features
 
