@@ -1,10 +1,5 @@
 <p align="center">
-  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); padding: 16px; border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);">
-    <rect x="2" y="4" width="20" height="16" rx="2" />
-    <path d="M12 4v16M2 12h20" stroke-opacity="0.1" />
-    <path d="M16 10h4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4V10z" fill="#1d4ed8" />
-    <circle cx="19" cy="13" r="1" fill="white" />
-  </svg>
+  <img src="logo.svg" width="80" height="80" alt="FinTrack Logo" style="border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);" />
 </p>
 
 <h1 align="center">FinTrack</h1>
