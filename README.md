@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="logo.svg" width="80" height="80" alt="FinTrack Logo" style="border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);" />
-</p>
-
 <h1 align="center">FinTrack</h1>
 <p align="center"><strong>Personal Finance Tracker</strong></p>
 
