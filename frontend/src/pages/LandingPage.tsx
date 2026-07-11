@@ -252,6 +252,9 @@ export function LandingPage() {
       <footer className="border-t py-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:px-6">
           <Logo size="sm" />
+          <p className="text-sm text-muted-foreground text-center">
+            Made by Raunak Bhutani
+          </p>
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} FinTrack. All rights reserved.
           </p>

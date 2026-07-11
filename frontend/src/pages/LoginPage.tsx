@@ -34,73 +34,80 @@ export function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-950 dark:to-gray-900 p-6">
-      <div className="absolute top-4 right-4">
+    <div className="min-h-screen flex flex-col items-center justify-between bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-950 dark:to-gray-900 p-6">
+      <div className="w-full flex justify-end">
         <ThemeToggle />
       </div>
-      <Card className="w-full max-w-md shadow-lg">
-        <CardHeader className="text-center space-y-3 pb-2">
-          <div className="mx-auto mb-2">
-            <Logo size="md" showText={false} className="justify-center" />
-          </div>
-          <CardTitle className="text-2xl font-heading">Welcome back</CardTitle>
-          <CardDescription>Sign in to your FinTrack account</CardDescription>
-        </CardHeader>
-        <CardContent className="px-8 pb-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {error && (
-              <div className="rounded-md bg-red-50 dark:bg-red-950/50 p-3 text-sm text-red-600 dark:text-red-400">{error}</div>
-            )}
-            <div className="space-y-3">
-              <Label htmlFor="email" className="text-base">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="h-11"
-                required
-              />
+      <div className="flex-1 flex items-center justify-center w-full py-8">
+        <Card className="w-full max-w-md shadow-lg">
+          <CardHeader className="text-center space-y-3 pb-2">
+            <div className="mx-auto mb-2">
+              <Logo size="md" showText={false} className="justify-center" />
             </div>
-            <div className="space-y-3">
-              <Label htmlFor="password" className="text-base">Password</Label>
-              <div className="relative">
+            <CardTitle className="text-2xl font-heading">Welcome back</CardTitle>
+            <CardDescription>Sign in to your FinTrack account</CardDescription>
+          </CardHeader>
+          <CardContent className="px-8 pb-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {error && (
+                <div className="rounded-md bg-red-50 dark:bg-red-950/50 p-3 text-sm text-red-600 dark:text-red-400">{error}</div>
+              )}
+              <div className="space-y-3">
+                <Label htmlFor="email" className="text-base">Email</Label>
                 <Input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="h-11 pr-10"
+                  id="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="h-11"
                   required
                 />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-lg cursor-pointer"
-                  aria-label={showPassword ? "Hide password" : "Show password"}
-                >
-                  {showPassword ? "👁️" : "👁️‍🗨️"}
-                </button>
               </div>
-            </div>
-            <Button type="submit" className="w-full h-11" disabled={loading}>
-              {loading ? "Signing in..." : "Sign in"}
-            </Button>
-          </form>
-          <p className="mt-6 text-center text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
-            <Link to="/signup" className="text-primary hover:underline font-medium">
-              Sign up
-            </Link>
-            {" · "}
-            <Link to="/" className="text-muted-foreground hover:underline">
-              Back to home
-            </Link>
-          </p>
-        </CardContent>
-      </Card>
+              <div className="space-y-3">
+                <Label htmlFor="password" className="text-base">Password</Label>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="h-11 pr-10"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-lg cursor-pointer"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? "👁️" : "👁️‍🗨️"}
+                  </button>
+                </div>
+              </div>
+              <Button type="submit" className="w-full h-11" disabled={loading}>
+                {loading ? "Signing in..." : "Sign in"}
+              </Button>
+            </form>
+            <p className="mt-6 text-center text-sm text-muted-foreground">
+              Don&apos;t have an account?{" "}
+              <Link to="/signup" className="text-primary hover:underline font-medium">
+                Sign up
+              </Link>
+              {" · "}
+              <Link to="/" className="text-muted-foreground hover:underline">
+                Back to home
+              </Link>
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+      <footer className="w-full text-center py-2">
+        <p className="text-sm text-muted-foreground">
+          Made by Raunak Bhutani
+        </p>
+      </footer>
     </div>
   );
 }
