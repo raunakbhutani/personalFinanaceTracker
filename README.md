@@ -1,6 +1,9 @@
 <h1 align="center">FinTrack</h1>
 <p align="center"><strong>Personal Finance Tracker</strong></p>
 
+<p align="center">
+  <img src="frontend/src/assets/projectOverview.gif" alt="FinTrack project overview" style="max-width: 100%; height: auto; border-radius: 24px; box-shadow: 0 20px 80px rgba(15, 23, 42, 0.12);" />
+</p>
 <h2 align="center">Manage your money <span style="color: #3b82f6;">with confidence</span></h2>
 
 <p align="center">
